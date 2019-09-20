@@ -1,0 +1,145 @@
+@startuml class_diagram
+
+title Class diagram for an ideal font file format
+
+hide stereotype
+
+skinparam class {
+  BackgroundColor<<Process>> lightblue
+  BackgroundColor<<Output>> pink
+}
+
+
+' rectangle Process {
+  class Guideline <<Process>> {
+
+  }
+
+  ' class MarkColor <<Process>> {
+  '
+  ' }
+
+  class Note <<Process>> {
+
+  }
+
+  class BackgroundLayer <<Process>> {
+
+  }
+
+' }
+
+' rectangle Inputs {
+  class Project {
+
+  }
+
+  class FontInfo {
+
+  }
+
+  class FontMaster {
+
+  }
+
+  class Group {
+
+  }
+
+  class Component {
+
+  }
+
+  class Kerning {
+
+  }
+  FontMaster -- Kerning
+  FontMaster -- FontInfo
+
+  class Glyph {
+    + unicodes: Array<Integer>
+    + name: String
+
+  }
+
+  class GlyphMaster {
+
+  }
+
+  class Component {
+
+  }
+
+  class Anchor {
+
+  }
+
+  class Outline {
+
+  }
+
+  class Group {
+
+  }
+  Project "1" -- "*" Group
+  Group "*" -- "*" Glyph
+
+  class InterpolationSpace {
+
+  }
+
+  class Location {
+
+  }
+
+  FontMaster "*" --- "1" InterpolationSpace
+  FontMaster "0..1" -- "*" GlyphMaster
+  GlyphMaster "1" -- "*" BackgroundLayer
+  GlyphMaster -- "*" Guideline
+
+  Location .. (FontMaster, InterpolationSpace)
+' }
+
+' rectangle Outputs {
+  class StaticFont <<Output>> {
+
+  }
+  FontMaster "1" -- "0..1" StaticFont
+
+  class Subspace {
+
+  }
+
+  class VariableFont <<Output>> {
+
+  }
+  InterpolationSpace "1" - "*" VariableFont
+
+  Subspace .. (InterpolationSpace, VariableFont)
+
+  class NamedInstance <<Output>> {
+
+  }
+  VariableFont "1" -- "*" NamedInstance
+
+  class StaticInstance <<Output>> {
+  }
+  InterpolationSpace "1" --- "*" StaticInstance
+
+' }
+
+Project "1" -- "*" FontMaster
+
+Project "1" -- "*" Glyph
+
+
+Glyph "1" -- "1..*" GlyphMaster
+
+GlyphMaster "1" -- "*" Component
+GlyphMaster "1" -- "*" Anchor
+GlyphMaster "1" -- "*" Outline
+
+
+
+
+@enduml
