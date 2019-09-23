@@ -60,7 +60,7 @@ https://github.com/schriftgestalt/GlyphsSDK/blob/master/GlyphsFileFormat.md
 
 Pros:
 * Layers inside glyphs makes more sense than UFO
-* supports nices features of Glyphs.app
+* supports nice features of Glyphs.app
 
 Limitations:
 * not an interchange format, very Glyphs.app-specific
@@ -102,5 +102,7 @@ https://raphlinus.github.io/
 
 
 ## Proposed class diagram (work in progress)
+
+![Legend for the class diagram below](legend.png)
 
 ![Class diagram for an ideal font file format](class_diagram.png)

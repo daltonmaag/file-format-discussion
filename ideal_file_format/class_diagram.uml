@@ -1,3 +1,41 @@
+@startuml legend
+
+title Legend
+
+hide stereotype
+
+skinparam class {
+  BackgroundColor<<Process>> lightblue
+  BackgroundColor<<Output>> pink
+}
+
+class Input {
+}
+note bottom of Input
+  Source information
+  that makes it into
+  the final font files
+end note
+
+class ProcessData <<Process>> {
+}
+note bottom of ProcessData
+  Process information that doesn't
+  impact the final font files, but is
+  important to have at hand while working.
+end note
+
+
+class Output <<Output>> {
+}
+note bottom of Output
+  Definitions of the possible
+  outputs (= font files) to
+  build from the sources.
+end note
+
+@enduml
+
 @startuml class_diagram
 
 title Class diagram for an ideal font file format
@@ -9,102 +47,104 @@ skinparam class {
   BackgroundColor<<Output>> pink
 }
 
+class Guideline <<Process>> {
 
-' rectangle Process {
-  class Guideline <<Process>> {
+}
 
-  }
+class Note <<Process>> {
 
-  ' class MarkColor <<Process>> {
-  '
-  ' }
+}
 
-  class Note <<Process>> {
+class BackgroundLayer <<Process>> {
 
-  }
+}
 
-  class BackgroundLayer <<Process>> {
+class Project {
 
-  }
+}
 
-' }
+class FontInfo {
 
-' rectangle Inputs {
-  class Project {
+}
 
-  }
+class FontMaster {
 
-  class FontInfo {
+}
+Project o-- "*" FontMaster
 
-  }
 
-  class FontMaster {
+class Group {
 
-  }
+}
+Project "1" o-- "*" Group
+Group "*" -- "*" Glyph
 
-  class Group {
+class Component {
 
-  }
+}
 
-  class Component {
+class Kerning {
 
-  }
+}
+FontMaster -- Kerning
+FontMaster -- FontInfo
 
-  class Kerning {
+class Glyph {
+  + unicodes: Array<Integer>
+  + name: String
 
-  }
-  FontMaster -- Kerning
-  FontMaster -- FontInfo
+}
+Project o-- "*" Glyph
 
-  class Glyph {
-    + unicodes: Array<Integer>
-    + name: String
+class GlyphMaster {
 
-  }
+}
 
-  class GlyphMaster {
+Glyph o-- "1..*" GlyphMaster
+FontMaster "0..1" -- "*" GlyphMaster
 
-  }
+class Component {
 
-  class Component {
+}
 
-  }
+class Anchor {
 
-  class Anchor {
+}
 
-  }
+class Outline {
 
-  class Outline {
+}
 
-  }
 
-  class Group {
+GlyphMaster "1" -- "*" Component
+GlyphMaster "1" -- "*" Anchor
+GlyphMaster "1" -- "*" Outline
 
-  }
-  Project "1" -- "*" Group
-  Group "*" -- "*" Glyph
 
+together {
   class InterpolationSpace {
-
   }
+  SubsetFontMaster "*" -- "1" InterpolationSpace
 
   class Location {
 
   }
 
-  FontMaster "*" --- "1" InterpolationSpace
-  FontMaster "0..1" -- "*" GlyphMaster
-  GlyphMaster "1" -- "*" BackgroundLayer
+  GlyphMaster o-- "*" BackgroundLayer
   GlyphMaster -- "*" Guideline
 
-  Location .. (FontMaster, InterpolationSpace)
-' }
+  Location .. (SubsetFontMaster, InterpolationSpace)
 
-' rectangle Outputs {
+
+  class SubsetFontMaster {
+
+  }
+  FontMaster o- "*" SubsetFontMaster
+
   class StaticFont <<Output>> {
 
   }
-  FontMaster "1" -- "0..1" StaticFont
+  SubsetFontMaster "1" -- "0..1" StaticFont
 
   class Subspace {
 
@@ -113,7 +153,7 @@ skinparam class {
   class VariableFont <<Output>> {
 
   }
-  InterpolationSpace "1" - "*" VariableFont
+  InterpolationSpace "1" -- "*" VariableFont
 
   Subspace .. (InterpolationSpace, VariableFont)
 
@@ -124,22 +164,8 @@ skinparam class {
 
   class StaticInstance <<Output>> {
   }
-  InterpolationSpace "1" --- "*" StaticInstance
-
-' }
-
-Project "1" -- "*" FontMaster
-
-Project "1" -- "*" Glyph
-
-
-Glyph "1" -- "1..*" GlyphMaster
-
-GlyphMaster "1" -- "*" Component
-GlyphMaster "1" -- "*" Anchor
-GlyphMaster "1" -- "*" Outline
-
-
+  InterpolationSpace "1" -- "*" StaticInstance
+}
 
 
 @enduml
