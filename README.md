@@ -2,17 +2,22 @@
 
 Discussion about how we would like to improve current font file formats.
 
+Note: everything below is subject to discussion, and currently only represents
+goals that we from Dalton Maag are coming up with. If you consider that the
+following goals are not relevant or that we're missing other important goals,
+please chime in.
+
 ## Why?
 
 An ideal font file format (and matching software) would enable this:
 
 Designers can edit the font in any software that they like, within the same
 team, while working together on the same project. Each stage of the project
-can use a different editor, each person on the team can use a different
-editor. They can use the proprietary power-user features that each editor
-provides, while maintaining the ability to work on the font in other editors
-that don't have that cool feature (but that provide other cool features of
-their own).
+can use the most efficient editor for that stage, and each person on the team
+can use their favourite editor. They can use the proprietary power-user
+features that each editor provides, while maintaining the ability to work on
+the font in other editors that don't have that cool feature (but that provide
+other cool features of their own).
 
 They can work in parallel on the same project, including several people
 working on the same weight in different scripts, or on the same script across
@@ -54,7 +59,7 @@ At the moment, some of the goals can be partially achieved and some not at all:
 
 ## Repository contents
 
-To achieve font development bliss, we're designing an ideal source and
+To achieve font development bliss, we would like to design an ideal source and
 interchange format for font data, that would achieve the goals set earlier.
 As a long-term goal, we would like to see that file format:
 
@@ -72,7 +77,7 @@ Because the above goal is a bit idealistic, as a middle term goal, we want
 that file format:
 
 - to be at least somewhat specified, maybe by having a reference
-  implementation in Python.
+  implementation.
 - to be "translatable" to existing formats such as UFO + Designspace, or
   proprietary formats such as Glyphs.app, à la glyphsLib.
 - to be easy to version control with git.
