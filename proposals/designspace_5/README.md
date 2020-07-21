@@ -48,6 +48,12 @@ discussed). From there:
     with repeated information).
   * Define several static instances from each group of interpolatable sources.
 
+## Related discussions
+
+* UFS: https://github.com/unified-font-object/ufo-spec/issues/86
+* Original STAT-in-Designspace (before `statmake`):
+https://github.com/fonttools/fonttools/issues/1507
+
 
 ## Sample files
 
