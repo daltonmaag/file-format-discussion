@@ -33,27 +33,27 @@
   </axes>
 
   <sources>
-    <source filename="master_0/SourceSans_ExtraLight.ufo">
+    <source filename="Roman/Masters/master_0/SourceSans_ExtraLight.ufo">
       <info copy="1" />
       <location>
         <dimension name="Weight" xvalue="0" />
         <dimension name="Italic" xvalue="0" />
       </location>
     </source>
-    <source filename="master_1/SourceSans_Black.ufo">
+    <source filename="Roman/Masters/master_1/SourceSans_Black.ufo">
       <location>
         <dimension name="Weight" xvalue="1000" />
         <dimension name="Italic" xvalue="0" />
       </location>
     </source>
-    <source filename="master_0/SourceSans_ExtraLightIt.ufo">
+    <source filename="Italic/Masters/master_0/SourceSans_ExtraLight.ufo">
       <info copy="1" />
       <location>
         <dimension name="Weight" xvalue="0" />
         <dimension name="Italic" xvalue="1" />
       </location>
     </source>
-    <source filename="master_1/SourceSans_BlackIt.ufo">
+    <source filename="Italic/Masters/master_1/SourceSans_Black.ufo">
       <location>
         <dimension name="Weight" xvalue="1000" />
         <dimension name="Italic" xvalue="1" />
@@ -63,7 +63,7 @@
 
   <variable-fonts>
     <!--
-      Each variable font is a subset of the axes provide at the top.
+      Each variable font is a subset of the axes provided at the top.
 
       Continuous axes can be included either:
         * in full,
@@ -74,7 +74,8 @@
       (or the compiler should assume the default value).
     -->
     <variable-font>
-      <!-- This one is the Roman, with full range for the Weight axis. -->
+      <!-- This one is the Roman (default location along ital),
+           with full range for the Weight axis. -->
       <axes>
         <axis name="Weight"/>
       </axes>
@@ -90,7 +91,7 @@
       <!-- As an example, this would be the Roman with a reduced range. -->
       <axes>
         <axis name="Weight" minimum="400" maximum="700" default="400"/>
-        <axis name="Italic" value="1"/>
+        <axis name="Italic" value="0"/>
       </axes>
     </variable-font>
   </variable-fonts>
@@ -113,8 +114,6 @@
         <dimension name="Weight" xvalue="0" />
         <dimension name="Italic" xvalue="0" />
       </location>
-      <kerning />
-      <info />
     </instance>
     <instance>
       <!-- Source Sans Light -->
@@ -122,8 +121,6 @@
         <dimension name="Weight" xvalue="100" />
         <dimension name="Italic" xvalue="0" />
       </location>
-      <kerning />
-      <info />
     </instance>
     <instance>
       <!--
@@ -134,8 +131,6 @@
         <dimension name="Weight" xvalue="368" />
         <dimension name="Italic" xvalue="0" />
       </location>
-      <kerning />
-      <info />
     </instance>
     <instance>
       <!-- Source Sans Semi Bold -->
@@ -143,8 +138,6 @@
         <dimension name="Weight" xvalue="600" />
         <dimension name="Italic" xvalue="0" />
       </location>
-      <kerning />
-      <info />
     </instance>
     <instance>
       <!--
@@ -156,8 +149,6 @@
         <dimension name="Weight" xvalue="824" />
         <dimension name="Italic" xvalue="0" />
       </location>
-      <kerning />
-      <info />
     </instance>
     <instance>
       <!-- Source Sans Black -->
@@ -165,8 +156,6 @@
         <dimension name="Weight" xvalue="1000" />
         <dimension name="Italic" xvalue="0" />
       </location>
-      <kerning />
-      <info />
     </instance>
   </instances>
 </designspace>
